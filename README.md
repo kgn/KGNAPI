@@ -1,6 +1,6 @@
 # KGNAPI
 
-`KGNAPI` is a collection of helpful methods that wrap [Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch).
+`KGNAPI` is an adapter layer for REST APIs with [cacheing](https://github.com/kgn/KGNCache).
 
 [![iOS 8.0+](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)]()
 [![watchOS 1.0+](http://img.shields.io/badge/watchOS-1.0%2B-blue.svg)]()
