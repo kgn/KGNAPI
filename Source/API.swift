@@ -44,9 +44,12 @@ public protocol APIRequest {
 /// Exiration object, used to define the cache experiation of a request
 public class Expiration {
 
-    // TODO: document
-    internal var shouldRequestIfAlreadyInCache: Bool
-    internal var dateComponents: NSDateComponents?
+    /// Determins if the APIRequest call should 
+    /// be made if a cached object already exists.
+    public let shouldRequestIfAlreadyInCache: Bool
+
+    /// The underlying date components object.
+    public let dateComponents: NSDateComponents?
 
     /// Create an expiration object that never expires
     public class func Never(shouldRequestIfAlreadyInCache shouldRequestIfAlreadyInCache: Bool = true) -> Self {
@@ -159,7 +162,9 @@ public class API {
      - Parameter callback: The method to call with with data or error from the request.
      */
     public func get(url: NSURL, data: [String: AnyObject]? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
-        self.cache.objectForKey(url.absoluteString) { object, location in
+        // TODO: take into account the data paramiter, sha1 hash?
+        let key = url.absoluteString
+        self.cache.objectForKey(key) { object, location in
             // Call the callback if the object is in the cache
             if let data = object {
                 var resultLocation: ResultLocation?
@@ -171,7 +176,7 @@ public class API {
                 callback(result: data, error: nil, resultLocation: resultLocation)
             }
 
-            // If we have an object, and the expiration 
+            // If we have an object, and the expiration
             // should not request from the server, than early exit
             if object != nil && expiration?.shouldRequestIfAlreadyInCache == false {
                 return
@@ -181,7 +186,7 @@ public class API {
             self.request(url, method: .Get, data: data) { object, error in
                 if expiration != nil {
                     if let data = object where error == nil {
-                        self.cache.setObject(data, forKey: url.absoluteString, expires: expiration?.dateComponents)
+                        self.cache.setObject(data, forKey: key, expires: expiration?.dateComponents)
                     }
                 }
                 callback(result: object, error: error, resultLocation: .API)
