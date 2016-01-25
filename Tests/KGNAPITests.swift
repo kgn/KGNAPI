@@ -280,6 +280,26 @@ class KGNAPITestRequest: XCTestCase {
         waitForExpectationsWithTimeout(NSTimeInterval(expiration+2), handler: nil)
     }
 
+    func testGetUserCacheShouldAlsoRequestIfInCacheFalse() {
+        let expectation1 = expectationWithDescription(__FUNCTION__)
+        API.sharedConnection().get(NSURL(string: "user")!, expiration: Expiration.Never(shouldRequestIfAlreadyInCache: false)) { result, error, location in
+            XCTAssertNotNil(result)
+            XCTAssertNil(error)
+            XCTAssertEqual(location, .API)
+            expectation1.fulfill()
+        }
+
+        let expectation2 = expectationWithDescription(__FUNCTION__)
+        API.sharedConnection().get(NSURL(string: "user")!) { result, error, location in
+            XCTAssertNotNil(result)
+            XCTAssertNil(error)
+            XCTAssertEqual(location, .API)
+            expectation2.fulfill()
+        }
+
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
     func testGetCar() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
