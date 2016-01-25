@@ -103,10 +103,8 @@ public class Expiration {
 
 public class API {
 
+    private let cache: Cache
     private static let privateSharedConnection = API()
-    private lazy var cache: Cache = {
-        return Cache(named: "api")
-    }()
 
     private func request(url: NSURL, method: APIMethodType = .Get, data: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         if debugLevel == .Print {
@@ -122,6 +120,14 @@ public class API {
         }
 
         request.call(url, method: method, data: data, callback: callback)
+    }
+
+    public convenience init() {
+        self.init(cacheName: "api")
+    }
+
+    public init(cacheName: String) {
+        self.cache = Cache(named: cacheName)
     }
 
     /// The request object to use
