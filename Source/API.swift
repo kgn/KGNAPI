@@ -183,10 +183,10 @@ public class API {
             }
 
             // Request the data from the server
-            self.request(url, method: .Get, data: data) { object, error in
+            self.request(url, method: .Get, data: data) { [weak self] object, error in
                 if expiration != nil {
                     if let data = object where error == nil {
-                        self.cache.setObject(data, forKey: key, expires: expiration?.dateComponents)
+                        self?.cache.setObject(data, forKey: key, expires: expiration?.dateComponents)
                     }
                 }
                 callback(result: object, error: error, resultLocation: .API)
