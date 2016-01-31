@@ -64,7 +64,7 @@ public class API {
 
     internal func cacheName(url: NSURL, data: [String: AnyObject]? = nil) -> String {
         // TODO: use data
-        return url.absolutePath
+        return url.absoluteString
     }
 
     public convenience init() {
