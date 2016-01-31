@@ -20,6 +20,7 @@
 		836E69A21BCCD3B40089EAB1 /* KGNAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836E69971BCCD3B40089EAB1 /* KGNAPI.framework */; };
 		836E69A71BCCD3B40089EAB1 /* KGNAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */; };
 		836E69B21BCCD4390089EAB1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69B11BCCD4390089EAB1 /* API.swift */; };
+		83D19AC11C5D8A65005D42B3 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D19AC01C5D8A65005D42B3 /* Expiration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGNAPITests.swift; sourceTree = "<group>"; };
 		836E69A81BCCD3B40089EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836E69B11BCCD4390089EAB1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		83D19AC01C5D8A65005D42B3 /* Expiration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expiration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				836E69B11BCCD4390089EAB1 /* API.swift */,
+				83D19AC01C5D8A65005D42B3 /* Expiration.swift */,
 				836E699A1BCCD3B40089EAB1 /* KGNAPI.h */,
 				836E699C1BCCD3B40089EAB1 /* Info.plist */,
 			);
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D19AC11C5D8A65005D42B3 /* Expiration.swift in Sources */,
 				836E69B21BCCD4390089EAB1 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

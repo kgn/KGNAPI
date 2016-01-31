@@ -41,72 +41,6 @@ public protocol APIRequest {
     func call(url: NSURL, method: APIMethodType, data: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void))
 }
 
-/// Exiration object, used to define the cache experiation of a request
-public class Expiration {
-
-    /// Determins if the APIRequest call should 
-    /// be made if a cached object already exists.
-    public let shouldRequestIfAlreadyInCache: Bool
-
-    /// The underlying date components object.
-    public let dateComponents: NSDateComponents?
-
-    /// Create an expiration object that never expires
-    public class func Never(shouldRequestIfAlreadyInCache shouldRequestIfAlreadyInCache: Bool = true) -> Self {
-        return self.init(dateComponents: nil, shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-    }
-
-    /// Create an expiration object that expires in a number of seconds
-    public convenience init(seconds: Int, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.second = seconds
-    }
-
-    /// Create an expiration object that expires in a number of minutes
-    public convenience init(minutes: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.minute = minutes
-    }
-
-    /// Create an expiration object that expires in a number of hours
-    public convenience init(hours: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.hour = hours
-    }
-
-    /// Create an expiration object that expires in a number of days
-    public convenience init(days: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.day = days
-    }
-
-    /// Create an expiration object that expires in a number of weeks
-    public convenience init(weeks: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        // TODO: do all calanders have a 7 day week?
-        self.dateComponents?.day = weeks*7
-    }
-
-    /// Create an expiration object that expires in a number of months
-    public convenience init(months: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.month = months
-    }
-
-    /// Create an expiration object that expires in a number of years
-    public convenience init(years: Int = 1, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.init(dateComponents: NSDateComponents(), shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
-        self.dateComponents?.year = years
-    }
-
-    /// Create an expiration object that expires with date components object
-    required public init(dateComponents: NSDateComponents?, shouldRequestIfAlreadyInCache: Bool = true) {
-        self.dateComponents = dateComponents
-        self.shouldRequestIfAlreadyInCache = true
-    }
-
-}
-
 public class API {
 
     private let cache: Cache
@@ -126,6 +60,11 @@ public class API {
         }
 
         request.call(url, method: method, data: data, callback: callback)
+    }
+
+    internal func cacheName(url: NSURL, data: [String: AnyObject]? = nil) -> String {
+        // TODO: use data
+        return url.absolutePath
     }
 
     public convenience init() {
@@ -162,8 +101,7 @@ public class API {
      - Parameter callback: The method to call with with data or error from the request.
      */
     public func get(url: NSURL, data: [String: AnyObject]? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
-        // TODO: take into account the data paramiter, sha1 hash?
-        let key = url.absoluteString
+        let key = self.cacheName(url, data: data)
         self.cache.objectForKey(key) { object, location in
             // Call the callback if the object is in the cache
             if let data = object {

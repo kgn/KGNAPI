@@ -118,6 +118,104 @@ class KGNAPIEarthQuackRequest: XCTestCase {
 
 }
 
+class KGNAPITestExpiration: XCTestCase {
+
+    func testShouldRequestIfAlreadyInCache() {
+        XCTAssertEqual(Expiration(seconds: 12).shouldRequestIfAlreadyInCache, true)
+        XCTAssertEqual(Expiration(seconds: 12, shouldRequestIfAlreadyInCache: false).shouldRequestIfAlreadyInCache, false)
+    }
+
+    func testNever() {
+        let expiration = Expiration.Never()
+        XCTAssertNil(expiration.dateComponents)
+    }
+
+    func testSeconds() {
+        let value = 12
+        let expiration = Expiration(seconds: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.second = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testMinutes() {
+        let value = 32
+        let expiration = Expiration(minutes: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.minute = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testHours() {
+        let value = 6
+        let expiration = Expiration(hours: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.hour = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testDays() {
+        let value = 4
+        let expiration = Expiration(days: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.day = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testWeeks() {
+        let value = 6
+        let expiration = Expiration(weeks: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.day = value*7
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testMonths() {
+        let value = 2
+        let expiration = Expiration(months: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.month = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testYears() {
+        let value = 7
+        let expiration = Expiration(years: value)
+
+        let dateComponents = NSDateComponents()
+        dateComponents.year = value
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+    func testDateComponents() {
+        let dateComponents = NSDateComponents()
+        dateComponents.second = 7
+        dateComponents.minute = 12
+        dateComponents.hour = 6
+        dateComponents.day = 2
+        dateComponents.month = 5
+        dateComponents.year = 1
+
+        let expiration = Expiration(dateComponents: dateComponents)
+
+        XCTAssertEqual(dateComponents, expiration.dateComponents)
+    }
+
+}
+
 class KGNAPITestRequest: XCTestCase {
 
     override func setUp() {
