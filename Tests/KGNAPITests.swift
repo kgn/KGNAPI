@@ -97,7 +97,7 @@ class KGNAPIEarthQuackRequest: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        API.sharedConnection().request = NSURLSessionRequest()
+        API.sharedConnection().request = NSURLSessionAPIRequest()
         API.sharedConnection().clearCache()
     }
 

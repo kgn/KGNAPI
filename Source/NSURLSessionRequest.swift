@@ -7,7 +7,9 @@
 //
 
 // An APIRequest that wraps NSURLSession
-public class NSURLSessionRequest: APIRequest {
+public class NSURLSessionAPIRequest: APIRequest {
+
+    public init() {}
 
     public func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]?, body: NSData?, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
