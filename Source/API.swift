@@ -38,17 +38,16 @@ public enum ResultLocation {
 
 /// Implement this protocal to configure the network requests.
 public protocol APIRequest {
-    func call(url: NSURL, method: APIMethodType, data: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void))
+    func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]?, body: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void))
 }
 
 public class API {
 
     private let cache: Cache
-    private static let privateSharedConnection = API()
 
-    private func request(url: NSURL, method: APIMethodType = .Get, data: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    private func request(url: NSURL, method: APIMethodType = .Get, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         if debugLevel == .Print {
-            print("Request - url: '\(url)' method: '\(method)' data: '\(data)'")
+            print("Request - url: '\(url)' method: '\(method)' headers: '\(headers)' body: '\(body)'")
         }
 
         guard let request = self.request else {
@@ -59,11 +58,11 @@ public class API {
             return
         }
 
-        request.call(url, method: method, data: data, callback: callback)
+        request.call(url, method: method, headers: headers, body: body, callback: callback)
     }
 
-    internal func cacheName(url: NSURL, data: [String: AnyObject]? = nil) -> String {
-        // TODO: use data
+    internal func cacheName(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil) -> String {
+        // TODO: use headers and body
         return url.absoluteString
     }
 
@@ -82,8 +81,11 @@ public class API {
     public var debugLevel: DebugLebel = .None
 
     /// The shared connection singleton: `API.sharedConnection()`
-    public static func sharedConnection() -> API {
-        return self.privateSharedConnection
+    class func sharedConnection() -> API {
+        struct Static {
+            static let instance = API()
+        }
+        return Static.instance
     }
 
     /// Clear the cache
@@ -100,8 +102,8 @@ public class API {
      Defaults to nil. If nil, no caching occures.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func get(url: NSURL, data: [String: AnyObject]? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
-        let key = self.cacheName(url, data: data)
+    public func get(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
+        let key = self.cacheName(url, headers: headers, body: body)
         self.cache.objectForKey(key) { object, location in
             // Call the callback if the object is in the cache
             if let data = object {
@@ -121,7 +123,7 @@ public class API {
             }
 
             // Request the data from the server
-            self.request(url, method: .Get, data: data) { [weak self] object, error in
+            self.request(url, method: .Get, headers: headers, body: body) { [weak self] object, error in
                 if expiration != nil {
                     if let data = object where error == nil {
                         self?.cache.setObject(data, forKey: key, expires: expiration?.dateComponents)
@@ -139,8 +141,8 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func put(url: NSURL, data: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        self.request(url, method: .Put, data: data, callback: callback)
+    public func put(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+        self.request(url, method: .Put, headers: headers, body: body, callback: callback)
     }
 
     /**
@@ -150,8 +152,8 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func post(url: NSURL, data: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        self.request(url, method: .Post, data: data, callback: callback)
+    public func post(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+        self.request(url, method: .Post, headers: headers, body: body, callback: callback)
     }
 
     /**
@@ -161,8 +163,8 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func delete(url: NSURL, data: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        self.request(url, method: .Delete, data: data, callback: callback)
+    public func delete(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+        self.request(url, method: .Delete, headers: headers, body: body, callback: callback)
     }
     
 }

@@ -12,7 +12,7 @@ import KGNThread
 
 class EarthQuakeRequest: APIRequest {
 
-    func call(url: NSURL, method: APIMethodType, data: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = method.rawValue
@@ -25,7 +25,7 @@ class EarthQuakeRequest: APIRequest {
 
 class TestRequest: APIRequest {
 
-    func call(url: NSURL, method: APIMethodType, data: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         Thread.Global.Background(delay: Double(arc4random_uniform(50))*0.01) {
 
             if method == .Put {
@@ -36,7 +36,7 @@ class TestRequest: APIRequest {
                     callback(result: ["company": "Porsche", "model": "GT3", "year": 2014], error: nil)
                 }
                 if url.absoluteString == "data" {
-                    callback(result: data, error: nil)
+                    callback(result: body, error: nil)
                 }
                 if url.absoluteString == "error" {
                     callback(result: nil, error: NSError(domain: "test.kgn.api.error.put", code: -1, userInfo: nil))
@@ -51,7 +51,7 @@ class TestRequest: APIRequest {
                     callback(result: ["company": "Porsche", "model": "911", "year": 2008], error: nil)
                 }
                 if url.absoluteString == "data" {
-                    callback(result: data, error: nil)
+                    callback(result: body, error: nil)
                 }
                 if url.absoluteString == "error" {
                     callback(result: nil, error: NSError(domain: "test.kgn.api.error.post", code: -1, userInfo: nil))
@@ -66,7 +66,7 @@ class TestRequest: APIRequest {
                     callback(result: ["company": "Audi", "model": "Q5", "year": 2016], error: nil)
                 }
                 if url.absoluteString == "data" {
-                    callback(result: data, error: nil)
+                    callback(result: body, error: nil)
                 }
                 if url.absoluteString == "error" {
                     callback(result: nil, error: NSError(domain: "test.kgn.api.error.get", code: -1, userInfo: nil))
@@ -81,7 +81,7 @@ class TestRequest: APIRequest {
                     callback(result: nil, error: nil)
                 }
                 if url.absoluteString == "data" {
-                    callback(result: data, error: nil)
+                    callback(result: body, error: nil)
                 }
                 if url.absoluteString == "error" {
                     callback(result: nil, error: NSError(domain: "test.kgn.api.error.delete", code: -1, userInfo: nil))
@@ -258,7 +258,7 @@ class KGNAPITestRequest: XCTestCase {
     func testPutData() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        API.sharedConnection().put(NSURL(string: "data")!, data: ["type": "put", "number": 1]) { result, error in
+        API.sharedConnection().put(NSURL(string: "data")!, body: ["type": "put", "number": 1]) { result, error in
             XCTAssertEqual(result!["type"], "put")
             XCTAssertEqual(result!["number"], 1)
             XCTAssertNil(error)
@@ -310,10 +310,10 @@ class KGNAPITestRequest: XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
-    func testPostData() {
+    func testPostBody() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        API.sharedConnection().post(NSURL(string: "data")!, data: ["type": "post", "number": 2]) { result, error in
+        API.sharedConnection().post(NSURL(string: "data")!, body: ["type": "post", "number": 2]) { result, error in
             XCTAssertEqual(result!["type"], "post")
             XCTAssertEqual(result!["number"], 2)
             XCTAssertNil(error)
@@ -413,10 +413,10 @@ class KGNAPITestRequest: XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
-    func testGetData() {
+    func testGetBody() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        API.sharedConnection().get(NSURL(string: "data")!, data: ["type": "get", "number": 3]) { result, error, location in
+        API.sharedConnection().get(NSURL(string: "data")!, body: ["type": "get", "number": 3]) { result, error, location in
             XCTAssertEqual(result!["type"], "get")
             XCTAssertEqual(result!["number"], 3)
             XCTAssertEqual(location, .API)
@@ -465,10 +465,10 @@ class KGNAPITestRequest: XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
 
-    func testDeleteData() {
+    func testDeleteBody() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        API.sharedConnection().delete(NSURL(string: "data")!, data: ["type": "delete", "number": 4]) { result, error in
+        API.sharedConnection().delete(NSURL(string: "data")!, body: ["type": "delete", "number": 4]) { result, error in
             XCTAssertEqual(result!["type"], "delete")
             XCTAssertEqual(result!["number"], 4)
             XCTAssertNil(error)
