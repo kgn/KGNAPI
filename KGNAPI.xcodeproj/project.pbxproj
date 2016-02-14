@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8341560E1C713B4800C7EB4F /* NSURLSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341560D1C713B4700C7EB4F /* NSURLSessionRequest.swift */; };
 		835B30DE1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */; };
 		835B30DF1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */; };
 		835B30E01C5600BF00B86FAC /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DC1C5600BF00B86FAC /* KGNCache.framework */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8341560D1C713B4700C7EB4F /* NSURLSessionRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionRequest.swift; sourceTree = "<group>"; };
 		835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		835B30DC1C5600BF00B86FAC /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/iOS/KGNCache.framework; sourceTree = "<group>"; };
 		835B30DD1C5600BF00B86FAC /* KGNThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNThread.framework; path = Carthage/Build/iOS/KGNThread.framework; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				836E69B11BCCD4390089EAB1 /* API.swift */,
+				8341560D1C713B4700C7EB4F /* NSURLSessionRequest.swift */,
 				83D19AC01C5D8A65005D42B3 /* Expiration.swift */,
 				836E699A1BCCD3B40089EAB1 /* KGNAPI.h */,
 				836E699C1BCCD3B40089EAB1 /* Info.plist */,
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8341560E1C713B4800C7EB4F /* NSURLSessionRequest.swift in Sources */,
 				83D19AC11C5D8A65005D42B3 /* Expiration.swift in Sources */,
 				836E69B21BCCD4390089EAB1 /* API.swift in Sources */,
 			);

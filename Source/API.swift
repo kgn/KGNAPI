@@ -38,14 +38,14 @@ public enum ResultLocation {
 
 /// Implement this protocal to configure the network requests.
 public protocol APIRequest {
-    func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]?, body: [String: AnyObject]?, callback: ((result: AnyObject?, error: NSError?) -> Void))
+    func call(url: NSURL, method: APIMethodType, headers: [String: AnyObject]?, body: NSData?, callback: ((result: AnyObject?, error: NSError?) -> Void))
 }
 
 public class API {
 
     private let cache: Cache
 
-    private func request(url: NSURL, method: APIMethodType = .Get, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    private func request(url: NSURL, method: APIMethodType = .Get, headers: [String: AnyObject]? = nil, body: NSData? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         if debugLevel == .Print {
             print("Request - url: '\(url)' method: '\(method)' headers: '\(headers)' body: '\(body)'")
         }
@@ -61,7 +61,7 @@ public class API {
         request.call(url, method: method, headers: headers, body: body, callback: callback)
     }
 
-    internal func cacheName(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil) -> String {
+    internal func cacheName(url: NSURL, headers: [String: AnyObject]?, body: NSData?) -> String {
         // TODO: use headers and body
         return url.absoluteString
     }
@@ -93,6 +93,14 @@ public class API {
         self.cache.clearCache()
     }
 
+    /// Converts a dictionary object to a json data object
+    public class func JSONData(body: [String: AnyObject]?) -> NSData? {
+        if body == nil {
+            return nil
+        }
+        return try? NSJSONSerialization.dataWithJSONObject(body!, options: [])
+    }
+
     /**
      GET request
 
@@ -102,7 +110,7 @@ public class API {
      Defaults to nil. If nil, no caching occures.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func get(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
+    public func get(url: NSURL, headers: [String: AnyObject]? = nil, body: NSData? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
         let key = self.cacheName(url, headers: headers, body: body)
         self.cache.objectForKey(key) { object, location in
             // Call the callback if the object is in the cache
@@ -141,7 +149,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func put(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    public func put(url: NSURL, headers: [String: AnyObject]? = nil, body: NSData? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         self.request(url, method: .Put, headers: headers, body: body, callback: callback)
     }
 
@@ -152,7 +160,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func post(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    public func post(url: NSURL, headers: [String: AnyObject]? = nil, body: NSData? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         self.request(url, method: .Post, headers: headers, body: body, callback: callback)
     }
 
@@ -163,7 +171,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func delete(url: NSURL, headers: [String: AnyObject]? = nil, body: [String: AnyObject]? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    public func delete(url: NSURL, headers: [String: AnyObject]? = nil, body: NSData? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
         self.request(url, method: .Delete, headers: headers, body: body, callback: callback)
     }
     
