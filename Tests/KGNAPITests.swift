@@ -105,8 +105,9 @@ class KGNAPIEarthQuackRequest: XCTestCase {
         let expectation = expectationWithDescription(__FUNCTION__)
 
         API.sharedConnection().get(NSURL(string: "http://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson")!) { result, error, location in
-            XCTAssertNotNil(result?["count"])
-            XCTAssertNotNil(result?["maxAllowed"])
+            let json = try? NSJSONSerialization.JSONObjectWithData(result as! NSData, options: [])
+            XCTAssertNotNil(json?["count"])
+            XCTAssertNotNil(json?["maxAllowed"])
             XCTAssertEqual(location, .API)
             XCTAssertNil(error)
             expectation.fulfill()

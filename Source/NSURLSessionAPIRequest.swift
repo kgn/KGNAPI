@@ -6,7 +6,8 @@
 //  Copyright © 2016 David Keegan. All rights reserved.
 //
 
-// An APIRequest that wraps NSURLSession
+/// An APIRequest that wraps NSURLSession.
+/// The result object sent to the callback is a data object from NSURLSession.
 public class NSURLSessionAPIRequest: APIRequest {
 
     public init() {}
@@ -20,11 +21,7 @@ public class NSURLSessionAPIRequest: APIRequest {
         request.HTTPBody = body
 
         NSURLSession(configuration: sessionConfiguration).dataTaskWithRequest(request, completionHandler: { data, response, error in
-            if data != nil {
-                callback(result: try? NSJSONSerialization.JSONObjectWithData(data!, options: []), error: error)
-            } else {
-                callback(result: nil, error: error)
-            }
+            callback(result: data, error: error)
         }).resume()
     }
     
