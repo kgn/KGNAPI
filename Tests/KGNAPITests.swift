@@ -102,7 +102,7 @@ class KGNAPIEarthQuackRequest: XCTestCase {
     }
 
     func testGetCount() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().get(NSURL(string: "http://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson")!) { result, error, location in
             let json = try? NSJSONSerialization.JSONObjectWithData(result as! NSData, options: [])
@@ -228,7 +228,7 @@ class KGNAPITestRequest: XCTestCase {
     // MARK: - PUT
 
     func testPutUser() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().put(NSURL(string: "user")!) { result, error in
             XCTAssertEqual(result!["name"], "Steve Wozniak")
@@ -242,7 +242,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPutCar() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().put(NSURL(string: "car")!) { result, error in
             XCTAssertEqual(result!["company"], "Porsche")
@@ -256,7 +256,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPutHeaders() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().put(NSURL(string: "headers")!, headers: ["Authorization": "token", "type": "put"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -269,7 +269,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPutBody() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let bodyData = API.JSONData(["type": "put", "number": 1])
         API.sharedConnection().put(NSURL(string: "body")!, body: bodyData) { result, error in
@@ -283,7 +283,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPutError() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().put(NSURL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
@@ -297,7 +297,7 @@ class KGNAPITestRequest: XCTestCase {
     // MARK: - POST
 
     func testPostUser() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().post(NSURL(string: "user")!) { result, error in
             XCTAssertEqual(result!["name"], "Bill Gates")
@@ -311,7 +311,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPostCar() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().post(NSURL(string: "car")!) { result, error in
             XCTAssertEqual(result!["company"], "Porsche")
@@ -325,7 +325,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPostHeaders() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().post(NSURL(string: "headers")!, headers: ["Authorization": "token", "type": "post"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -338,7 +338,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPostBody() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let bodyData = API.JSONData(["type": "post", "number": 2])
         API.sharedConnection().post(NSURL(string: "body")!, body: bodyData) { result, error in
@@ -352,7 +352,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testPostError() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().post(NSURL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
@@ -366,7 +366,7 @@ class KGNAPITestRequest: XCTestCase {
     // MARK: - GET
 
     func testGetUser() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().get(NSURL(string: "user")!) { result, error, location in
             XCTAssertEqual(result!["name"], "Steve Jobs")
@@ -382,7 +382,7 @@ class KGNAPITestRequest: XCTestCase {
 
     func testGetUserCache() {
         let expiration = 1
-        let expectation1 = expectationWithDescription(__FUNCTION__)
+        let expectation1 = expectationWithDescription(#function)
         API.sharedConnection().get(NSURL(string: "user")!, expiration: Expiration(seconds: expiration)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -390,7 +390,7 @@ class KGNAPITestRequest: XCTestCase {
             expectation1.fulfill()
         }
 
-        let expectation2 = expectationWithDescription(__FUNCTION__)
+        let expectation2 = expectationWithDescription(#function)
         Thread.Main(delay: NSTimeInterval(expiration+1)) {
             API.sharedConnection().get(NSURL(string: "user")!) { result, error, location in
                 XCTAssertNil(error)
@@ -407,7 +407,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testGetUserCacheShouldAlsoRequestIfInCacheFalse() {
-        let expectation1 = expectationWithDescription(__FUNCTION__)
+        let expectation1 = expectationWithDescription(#function)
         API.sharedConnection().get(NSURL(string: "user")!, expiration: Expiration.Never(shouldRequestIfAlreadyInCache: false)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -415,7 +415,7 @@ class KGNAPITestRequest: XCTestCase {
             expectation1.fulfill()
         }
 
-        let expectation2 = expectationWithDescription(__FUNCTION__)
+        let expectation2 = expectationWithDescription(#function)
         API.sharedConnection().get(NSURL(string: "user")!) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -427,7 +427,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testGetCar() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().get(NSURL(string: "car")!) { result, error, location in
             XCTAssertEqual(result!["company"], "Audi")
@@ -442,7 +442,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testGetHeaders() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().get(NSURL(string: "headers")!, headers: ["Authorization": "token", "type": "get"]) { result, error, location in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -456,7 +456,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testGetBody() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let bodyData = API.JSONData(["type": "get", "number": 3])
         API.sharedConnection().get(NSURL(string: "body")!, body: bodyData) { result, error, location in
@@ -471,7 +471,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testGetError() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().get(NSURL(string: "error")!) { result, error, location in
             XCTAssertNotNil(error)
@@ -485,7 +485,7 @@ class KGNAPITestRequest: XCTestCase {
     // MARK: - DELETE
 
     func testDeleteUser() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().delete(NSURL(string: "user")!) { result, error in
             XCTAssertEqual(result!.count, 0)
@@ -497,7 +497,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testDeleteCar() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().delete(NSURL(string: "car")!) { result, error in
             XCTAssertNil(result)
@@ -509,7 +509,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testDeleteHeaders() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().delete(NSURL(string: "headers")!, headers: ["Authorization": "token", "type": "delete"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -522,7 +522,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testDeleteBody() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let bodyData = API.JSONData(["type": "delete", "number": 4])
         API.sharedConnection().delete(NSURL(string: "body")!, body: bodyData) { result, error in
@@ -536,7 +536,7 @@ class KGNAPITestRequest: XCTestCase {
     }
 
     func testDeleteError() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         API.sharedConnection().delete(NSURL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
