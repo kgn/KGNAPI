@@ -2,10 +2,8 @@
 
 `KGNAPI` is an adapter layer for REST APIs with [cacheing](https://github.com/kgn/KGNCache).
 
-[![iOS 8.0+](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)]()
-[![Swift 2.3+](http://img.shields.io/badge/Swift-2.0-blue.svg)]()
 [![Release](https://img.shields.io/github/release/kgn/KGNAPI.svg)](/releases)
-[![Build Status](http://img.shields.io/badge/License-MIT-lightgrey.svg)](/LICENSE)
+[![License](http://img.shields.io/badge/License-MIT-lightgrey.svg)](/LICENSE)
 
 [![Build Status](https://travis-ci.org/kgn/KGNAPI.svg)](https://travis-ci.org/kgn/KGNAPI)
 [![Test Coverage](http://img.shields.io/badge/Tests-100%25-green.svg)]()
