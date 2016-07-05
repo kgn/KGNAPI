@@ -7,16 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64D31D9A1D2B9225009B93CA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* CryptoSwift.framework */; };
+		64D31D9B1D2B9225009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D981D2B9217009B93CA /* KGNCache.framework */; };
+		64D31D9C1D2B9225009B93CA /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D991D2B9217009B93CA /* KGNThread.framework */; };
+		64D31D9D1D2B9235009B93CA /* CryptoSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31D9E1D2B9235009B93CA /* KGNCache.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D981D2B9217009B93CA /* KGNCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31D9F1D2B9235009B93CA /* KGNThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D991D2B9217009B93CA /* KGNThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31DA01D2B9238009B93CA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* CryptoSwift.framework */; };
+		64D31DA11D2B9238009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D981D2B9217009B93CA /* KGNCache.framework */; };
+		64D31DA21D2B9238009B93CA /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D991D2B9217009B93CA /* KGNThread.framework */; };
+		64D31DBC1D2B92DD009B93CA /* KGNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 836E699A1BCCD3B40089EAB1 /* KGNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64D31DBD1D2B92E2009B93CA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D941D2B91F4009B93CA /* CryptoSwift.framework */; };
+		64D31DBE1D2B92E2009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D951D2B91F4009B93CA /* KGNCache.framework */; };
+		64D31DBF1D2B92E2009B93CA /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D961D2B91F4009B93CA /* KGNThread.framework */; };
+		64D31DC01D2B92F5009B93CA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69B11BCCD4390089EAB1 /* API.swift */; };
+		64D31DC11D2B92F7009B93CA /* NSURLSessionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */; };
+		64D31DC21D2B92F9009B93CA /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D19AC01C5D8A65005D42B3 /* Expiration.swift */; };
+		64D31DC51D2B931C009B93CA /* KGNAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31DA81D2B9288009B93CA /* KGNAPI.framework */; };
+		64D31DC61D2B9325009B93CA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D941D2B91F4009B93CA /* CryptoSwift.framework */; };
+		64D31DC71D2B9325009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D951D2B91F4009B93CA /* KGNCache.framework */; };
+		64D31DC81D2B9325009B93CA /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D961D2B91F4009B93CA /* KGNThread.framework */; };
+		64D31DCA1D2B933B009B93CA /* CryptoSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D941D2B91F4009B93CA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31DCB1D2B933B009B93CA /* KGNCache.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D951D2B91F4009B93CA /* KGNCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31DCC1D2B933B009B93CA /* KGNThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D961D2B91F4009B93CA /* KGNThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64D31DCD1D2B9343009B93CA /* KGNAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */; };
 		8341560E1C713B4800C7EB4F /* NSURLSessionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */; };
-		835B30DE1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */; };
-		835B30DF1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */; };
-		835B30E01C5600BF00B86FAC /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DC1C5600BF00B86FAC /* KGNCache.framework */; };
-		835B30E11C5600BF00B86FAC /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DC1C5600BF00B86FAC /* KGNCache.framework */; };
-		835B30E21C5600BF00B86FAC /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DD1C5600BF00B86FAC /* KGNThread.framework */; };
-		835B30E31C5600BF00B86FAC /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DD1C5600BF00B86FAC /* KGNThread.framework */; };
-		835B30E61C5600DC00B86FAC /* CryptoSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		835B30E71C5600DC00B86FAC /* KGNCache.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DC1C5600BF00B86FAC /* KGNCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		835B30E81C5600DC00B86FAC /* KGNThread.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 835B30DD1C5600BF00B86FAC /* KGNThread.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		836E699B1BCCD3B40089EAB1 /* KGNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 836E699A1BCCD3B40089EAB1 /* KGNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		836E69A21BCCD3B40089EAB1 /* KGNAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836E69971BCCD3B40089EAB1 /* KGNAPI.framework */; };
 		836E69A71BCCD3B40089EAB1 /* KGNAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */; };
@@ -25,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		64D31DC31D2B9317009B93CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 836E698E1BCCD3B30089EAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64D31DA71D2B9288009B93CA;
+			remoteInfo = "KGNAPI-tvOS";
+		};
 		836E69A31BCCD3B40089EAB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 836E698E1BCCD3B30089EAB1 /* Project object */;
@@ -35,15 +57,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		64D31DC91D2B932A009B93CA /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				64D31DCA1D2B933B009B93CA /* CryptoSwift.framework in Copy Frameworks */,
+				64D31DCB1D2B933B009B93CA /* KGNCache.framework in Copy Frameworks */,
+				64D31DCC1D2B933B009B93CA /* KGNThread.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		835B30E51C5600D800B86FAC /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				835B30E61C5600DC00B86FAC /* CryptoSwift.framework in Copy Frameworks */,
-				835B30E71C5600DC00B86FAC /* KGNCache.framework in Copy Frameworks */,
-				835B30E81C5600DC00B86FAC /* KGNThread.framework in Copy Frameworks */,
+				64D31D9D1D2B9235009B93CA /* CryptoSwift.framework in Copy Frameworks */,
+				64D31D9E1D2B9235009B93CA /* KGNCache.framework in Copy Frameworks */,
+				64D31D9F1D2B9235009B93CA /* KGNThread.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,14 +86,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64D31D921D2B9014009B93CA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		64D31D941D2B91F4009B93CA /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/tvOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		64D31D951D2B91F4009B93CA /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/tvOS/KGNCache.framework; sourceTree = "<group>"; };
+		64D31D961D2B91F4009B93CA /* KGNThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNThread.framework; path = Carthage/Build/tvOS/KGNThread.framework; sourceTree = "<group>"; };
+		64D31D971D2B9217009B93CA /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		64D31D981D2B9217009B93CA /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/iOS/KGNCache.framework; sourceTree = "<group>"; };
+		64D31D991D2B9217009B93CA /* KGNThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNThread.framework; path = Carthage/Build/iOS/KGNThread.framework; sourceTree = "<group>"; };
+		64D31DA81D2B9288009B93CA /* KGNAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KGNAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D31DB41D2B92B2009B93CA /* KGNAPITests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KGNAPITests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLSessionAPIRequest.swift; sourceTree = "<group>"; };
-		835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
-		835B30DC1C5600BF00B86FAC /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/iOS/KGNCache.framework; sourceTree = "<group>"; };
-		835B30DD1C5600BF00B86FAC /* KGNThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNThread.framework; path = Carthage/Build/iOS/KGNThread.framework; sourceTree = "<group>"; };
 		836E69971BCCD3B40089EAB1 /* KGNAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KGNAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		836E699A1BCCD3B40089EAB1 /* KGNAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KGNAPI.h; sourceTree = "<group>"; };
 		836E699C1BCCD3B40089EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		836E69A11BCCD3B40089EAB1 /* KGNAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KGNAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		836E69A11BCCD3B40089EAB1 /* KGNAPITests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KGNAPITests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGNAPITests.swift; sourceTree = "<group>"; };
 		836E69A81BCCD3B40089EAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		836E69B11BCCD4390089EAB1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -66,13 +107,34 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		64D31DA41D2B9288009B93CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D31DBD1D2B92E2009B93CA /* CryptoSwift.framework in Frameworks */,
+				64D31DBE1D2B92E2009B93CA /* KGNCache.framework in Frameworks */,
+				64D31DBF1D2B92E2009B93CA /* KGNThread.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D31DB11D2B92B2009B93CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D31DC51D2B931C009B93CA /* KGNAPI.framework in Frameworks */,
+				64D31DC61D2B9325009B93CA /* CryptoSwift.framework in Frameworks */,
+				64D31DC71D2B9325009B93CA /* KGNCache.framework in Frameworks */,
+				64D31DC81D2B9325009B93CA /* KGNThread.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		836E69931BCCD3B40089EAB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835B30E01C5600BF00B86FAC /* KGNCache.framework in Frameworks */,
-				835B30E21C5600BF00B86FAC /* KGNThread.framework in Frameworks */,
-				835B30DE1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */,
+				64D31D9A1D2B9225009B93CA /* CryptoSwift.framework in Frameworks */,
+				64D31D9B1D2B9225009B93CA /* KGNCache.framework in Frameworks */,
+				64D31D9C1D2B9225009B93CA /* KGNThread.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,21 +143,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				836E69A21BCCD3B40089EAB1 /* KGNAPI.framework in Frameworks */,
-				835B30E11C5600BF00B86FAC /* KGNCache.framework in Frameworks */,
-				835B30DF1C5600BF00B86FAC /* CryptoSwift.framework in Frameworks */,
-				835B30E31C5600BF00B86FAC /* KGNThread.framework in Frameworks */,
+				64D31DA01D2B9238009B93CA /* CryptoSwift.framework in Frameworks */,
+				64D31DA11D2B9238009B93CA /* KGNCache.framework in Frameworks */,
+				64D31DA21D2B9238009B93CA /* KGNThread.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64D31D901D2B8FB6009B93CA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				64D31D971D2B9217009B93CA /* CryptoSwift.framework */,
+				64D31D981D2B9217009B93CA /* KGNCache.framework */,
+				64D31D991D2B9217009B93CA /* KGNThread.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		64D31D911D2B8FBD009B93CA /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				64D31D941D2B91F4009B93CA /* CryptoSwift.framework */,
+				64D31D951D2B91F4009B93CA /* KGNCache.framework */,
+				64D31D961D2B91F4009B93CA /* KGNThread.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
 		835B30E41C5600C800B86FAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				835B30DB1C5600BF00B86FAC /* CryptoSwift.framework */,
-				835B30DC1C5600BF00B86FAC /* KGNCache.framework */,
-				835B30DD1C5600BF00B86FAC /* KGNThread.framework */,
+				64D31D901D2B8FB6009B93CA /* iOS */,
+				64D31D911D2B8FBD009B93CA /* tvOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,6 +184,7 @@
 		836E698D1BCCD3B30089EAB1 = {
 			isa = PBXGroup;
 			children = (
+				64D31D921D2B9014009B93CA /* .travis.yml */,
 				836E69991BCCD3B40089EAB1 /* Source */,
 				836E69A51BCCD3B40089EAB1 /* Tests */,
 				835B30E41C5600C800B86FAC /* Frameworks */,
@@ -114,7 +196,9 @@
 			isa = PBXGroup;
 			children = (
 				836E69971BCCD3B40089EAB1 /* KGNAPI.framework */,
-				836E69A11BCCD3B40089EAB1 /* KGNAPITests.xctest */,
+				836E69A11BCCD3B40089EAB1 /* KGNAPITests-iOS.xctest */,
+				64D31DA81D2B9288009B93CA /* KGNAPI.framework */,
+				64D31DB41D2B92B2009B93CA /* KGNAPITests-tvOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,11 +206,11 @@
 		836E69991BCCD3B40089EAB1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				836E69B11BCCD4390089EAB1 /* API.swift */,
-				8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */,
-				83D19AC01C5D8A65005D42B3 /* Expiration.swift */,
-				836E699A1BCCD3B40089EAB1 /* KGNAPI.h */,
 				836E699C1BCCD3B40089EAB1 /* Info.plist */,
+				836E699A1BCCD3B40089EAB1 /* KGNAPI.h */,
+				836E69B11BCCD4390089EAB1 /* API.swift */,
+				83D19AC01C5D8A65005D42B3 /* Expiration.swift */,
+				8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -134,8 +218,8 @@
 		836E69A51BCCD3B40089EAB1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */,
 				836E69A81BCCD3B40089EAB1 /* Info.plist */,
+				836E69A61BCCD3B40089EAB1 /* KGNAPITests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -143,6 +227,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		64D31DA51D2B9288009B93CA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D31DBC1D2B92DD009B93CA /* KGNAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		836E69941BCCD3B40089EAB1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,9 +246,46 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		836E69961BCCD3B40089EAB1 /* KGNAPI */ = {
+		64D31DA71D2B9288009B93CA /* KGNAPI-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPI" */;
+			buildConfigurationList = 64D31DAD1D2B9288009B93CA /* Build configuration list for PBXNativeTarget "KGNAPI-tvOS" */;
+			buildPhases = (
+				64D31DA31D2B9288009B93CA /* Sources */,
+				64D31DA41D2B9288009B93CA /* Frameworks */,
+				64D31DA51D2B9288009B93CA /* Headers */,
+				64D31DA61D2B9288009B93CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KGNAPI-tvOS";
+			productName = KGNAPI;
+			productReference = 64D31DA81D2B9288009B93CA /* KGNAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		64D31DB31D2B92B2009B93CA /* KGNAPITests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D31DB91D2B92B2009B93CA /* Build configuration list for PBXNativeTarget "KGNAPITests-tvOS" */;
+			buildPhases = (
+				64D31DB01D2B92B2009B93CA /* Sources */,
+				64D31DB11D2B92B2009B93CA /* Frameworks */,
+				64D31DB21D2B92B2009B93CA /* Resources */,
+				64D31DC91D2B932A009B93CA /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64D31DC41D2B9317009B93CA /* PBXTargetDependency */,
+			);
+			name = "KGNAPITests-tvOS";
+			productName = "KGNAPITests-tvOS";
+			productReference = 64D31DB41D2B92B2009B93CA /* KGNAPITests-tvOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		836E69961BCCD3B40089EAB1 /* KGNAPI-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPI-iOS" */;
 			buildPhases = (
 				836E69921BCCD3B40089EAB1 /* Sources */,
 				836E69931BCCD3B40089EAB1 /* Frameworks */,
@@ -167,14 +296,14 @@
 			);
 			dependencies = (
 			);
-			name = KGNAPI;
+			name = "KGNAPI-iOS";
 			productName = KGNAPI;
 			productReference = 836E69971BCCD3B40089EAB1 /* KGNAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		836E69A01BCCD3B40089EAB1 /* KGNAPITests */ = {
+		836E69A01BCCD3B40089EAB1 /* KGNAPITests-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPITests" */;
+			buildConfigurationList = 836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPITests-iOS" */;
 			buildPhases = (
 				836E699D1BCCD3B40089EAB1 /* Sources */,
 				836E699E1BCCD3B40089EAB1 /* Frameworks */,
@@ -186,9 +315,9 @@
 			dependencies = (
 				836E69A41BCCD3B40089EAB1 /* PBXTargetDependency */,
 			);
-			name = KGNAPITests;
+			name = "KGNAPITests-iOS";
 			productName = KGNAPITests;
-			productReference = 836E69A11BCCD3B40089EAB1 /* KGNAPITests.xctest */;
+			productReference = 836E69A11BCCD3B40089EAB1 /* KGNAPITests-iOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -197,10 +326,16 @@
 		836E698E1BCCD3B30089EAB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "David Keegan";
 				TargetAttributes = {
+					64D31DA71D2B9288009B93CA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					64D31DB31D2B92B2009B93CA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					836E69961BCCD3B40089EAB1 = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -221,13 +356,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				836E69961BCCD3B40089EAB1 /* KGNAPI */,
-				836E69A01BCCD3B40089EAB1 /* KGNAPITests */,
+				836E69961BCCD3B40089EAB1 /* KGNAPI-iOS */,
+				836E69A01BCCD3B40089EAB1 /* KGNAPITests-iOS */,
+				64D31DA71D2B9288009B93CA /* KGNAPI-tvOS */,
+				64D31DB31D2B92B2009B93CA /* KGNAPITests-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		64D31DA61D2B9288009B93CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D31DB21D2B92B2009B93CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		836E69951BCCD3B40089EAB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,13 +396,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		64D31DA31D2B9288009B93CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D31DC01D2B92F5009B93CA /* API.swift in Sources */,
+				64D31DC21D2B92F9009B93CA /* Expiration.swift in Sources */,
+				64D31DC11D2B92F7009B93CA /* NSURLSessionAPIRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D31DB01D2B92B2009B93CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D31DCD1D2B9343009B93CA /* KGNAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		836E69921BCCD3B40089EAB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8341560E1C713B4800C7EB4F /* NSURLSessionAPIRequest.swift in Sources */,
-				83D19AC11C5D8A65005D42B3 /* Expiration.swift in Sources */,
 				836E69B21BCCD4390089EAB1 /* API.swift in Sources */,
+				83D19AC11C5D8A65005D42B3 /* Expiration.swift in Sources */,
+				8341560E1C713B4800C7EB4F /* NSURLSessionAPIRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,14 +435,101 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		64D31DC41D2B9317009B93CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64D31DA71D2B9288009B93CA /* KGNAPI-tvOS */;
+			targetProxy = 64D31DC31D2B9317009B93CA /* PBXContainerItemProxy */;
+		};
 		836E69A41BCCD3B40089EAB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 836E69961BCCD3B40089EAB1 /* KGNAPI */;
+			target = 836E69961BCCD3B40089EAB1 /* KGNAPI-iOS */;
 			targetProxy = 836E69A31BCCD3B40089EAB1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		64D31DAE1D2B9288009B93CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		64D31DAF1D2B9288009B93CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		64D31DBA1D2B92B2009B93CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		64D31DBB1D2B92B2009B93CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
 		836E69A91BCCD3B40089EAB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -366,6 +622,7 @@
 		836E69AC1BCCD3B40089EAB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -379,8 +636,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.KGNAPI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -389,6 +646,7 @@
 		836E69AD1BCCD3B40089EAB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -402,8 +660,8 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.KGNAPI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -417,7 +675,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.KGNAPITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -431,7 +689,7 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidkeegan.KGNAPITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -439,6 +697,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		64D31DAD1D2B9288009B93CA /* Build configuration list for PBXNativeTarget "KGNAPI-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D31DAE1D2B9288009B93CA /* Debug */,
+				64D31DAF1D2B9288009B93CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		64D31DB91D2B92B2009B93CA /* Build configuration list for PBXNativeTarget "KGNAPITests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D31DBA1D2B92B2009B93CA /* Debug */,
+				64D31DBB1D2B92B2009B93CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		836E69911BCCD3B30089EAB1 /* Build configuration list for PBXProject "KGNAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -448,7 +722,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPI" */ = {
+		836E69AB1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPI-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				836E69AC1BCCD3B40089EAB1 /* Debug */,
@@ -457,7 +731,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPITests" */ = {
+		836E69AE1BCCD3B40089EAB1 /* Build configuration list for PBXNativeTarget "KGNAPITests-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				836E69AF1BCCD3B40089EAB1 /* Debug */,
