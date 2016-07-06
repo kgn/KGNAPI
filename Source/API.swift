@@ -70,7 +70,7 @@ public class API {
         self.init(cacheName: "api")
     }
 
-    public init(cacheName: String) {
+    public required init(cacheName: String) {
         self.cache = Cache(named: cacheName)
     }
 
@@ -81,12 +81,17 @@ public class API {
     public var debugLevel: DebugLebel = .None
 
     /// The shared connection singleton: `API.sharedConnection()`
-    class func sharedConnection() -> API {
+    public class func sharedConnection() -> API {
         struct Static {
             static let instance = API()
         }
         return Static.instance
     }
+    
+//    /// The shared connection singleton: `API.sharedConnection`
+//    public static func sharedConnection() -> Self {
+//        return self.init()
+//    }
 
     /// Clear the cache
     public func clearCache() {

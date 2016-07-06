@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64312C4A1D2CDA7100485049 /* NSURLSessionAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8341560D1C713B4700C7EB4F /* NSURLSessionAPIRequest.swift */; };
+		64312C4B1D2CDA7300485049 /* Expiration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D19AC01C5D8A65005D42B3 /* Expiration.swift */; };
+		64312C4C1D2CDA7700485049 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69B11BCCD4390089EAB1 /* API.swift */; };
+		64312C4D1D2CDA7A00485049 /* KGNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 836E699A1BCCD3B40089EAB1 /* KGNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64312C4E1D2CDA8200485049 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64312C3A1D2CDA0D00485049 /* CryptoSwift.framework */; };
+		64312C4F1D2CDA8200485049 /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64312C3B1D2CDA0D00485049 /* KGNCache.framework */; };
+		64312C501D2CDA8200485049 /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64312C3C1D2CDA0D00485049 /* KGNThread.framework */; };
 		64D31D9A1D2B9225009B93CA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* CryptoSwift.framework */; };
 		64D31D9B1D2B9225009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D981D2B9217009B93CA /* KGNCache.framework */; };
 		64D31D9C1D2B9225009B93CA /* KGNThread.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D991D2B9217009B93CA /* KGNThread.framework */; };
@@ -86,6 +93,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		64312C3A1D2CDA0D00485049 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/watchOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		64312C3B1D2CDA0D00485049 /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/watchOS/KGNCache.framework; sourceTree = "<group>"; };
+		64312C3C1D2CDA0D00485049 /* KGNThread.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNThread.framework; path = Carthage/Build/watchOS/KGNThread.framework; sourceTree = "<group>"; };
+		64312C421D2CDA5000485049 /* KGNAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KGNAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D31D921D2B9014009B93CA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		64D31D941D2B91F4009B93CA /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/tvOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		64D31D951D2B91F4009B93CA /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/tvOS/KGNCache.framework; sourceTree = "<group>"; };
@@ -107,6 +118,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		64312C3E1D2CDA5000485049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64312C4E1D2CDA8200485049 /* CryptoSwift.framework in Frameworks */,
+				64312C4F1D2CDA8200485049 /* KGNCache.framework in Frameworks */,
+				64312C501D2CDA8200485049 /* KGNThread.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64D31DA41D2B9288009B93CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +173,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64312C391D2CD91800485049 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				64312C3A1D2CDA0D00485049 /* CryptoSwift.framework */,
+				64312C3B1D2CDA0D00485049 /* KGNCache.framework */,
+				64312C3C1D2CDA0D00485049 /* KGNThread.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
 		64D31D901D2B8FB6009B93CA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +208,7 @@
 			children = (
 				64D31D901D2B8FB6009B93CA /* iOS */,
 				64D31D911D2B8FBD009B93CA /* tvOS */,
+				64312C391D2CD91800485049 /* watchOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,6 +231,7 @@
 				836E69A11BCCD3B40089EAB1 /* KGNAPITests-iOS.xctest */,
 				64D31DA81D2B9288009B93CA /* KGNAPI.framework */,
 				64D31DB41D2B92B2009B93CA /* KGNAPITests-tvOS.xctest */,
+				64312C421D2CDA5000485049 /* KGNAPI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,6 +260,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		64312C3F1D2CDA5000485049 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64312C4D1D2CDA7A00485049 /* KGNAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64D31DA51D2B9288009B93CA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +287,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		64312C411D2CDA5000485049 /* KGNAPI-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64312C471D2CDA5000485049 /* Build configuration list for PBXNativeTarget "KGNAPI-watchOS" */;
+			buildPhases = (
+				64312C3D1D2CDA5000485049 /* Sources */,
+				64312C3E1D2CDA5000485049 /* Frameworks */,
+				64312C3F1D2CDA5000485049 /* Headers */,
+				64312C401D2CDA5000485049 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KGNAPI-watchOS";
+			productName = KGNAPI;
+			productReference = 64312C421D2CDA5000485049 /* KGNAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		64D31DA71D2B9288009B93CA /* KGNAPI-tvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64D31DAD1D2B9288009B93CA /* Build configuration list for PBXNativeTarget "KGNAPI-tvOS" */;
@@ -330,6 +389,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "David Keegan";
 				TargetAttributes = {
+					64312C411D2CDA5000485049 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					64D31DA71D2B9288009B93CA = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -360,11 +422,19 @@
 				836E69A01BCCD3B40089EAB1 /* KGNAPITests-iOS */,
 				64D31DA71D2B9288009B93CA /* KGNAPI-tvOS */,
 				64D31DB31D2B92B2009B93CA /* KGNAPITests-tvOS */,
+				64312C411D2CDA5000485049 /* KGNAPI-watchOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		64312C401D2CDA5000485049 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64D31DA61D2B9288009B93CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,6 +466,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		64312C3D1D2CDA5000485049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64312C4C1D2CDA7700485049 /* API.swift in Sources */,
+				64312C4B1D2CDA7300485049 /* Expiration.swift in Sources */,
+				64312C4A1D2CDA7100485049 /* NSURLSessionAPIRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64D31DA31D2B9288009B93CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +528,56 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		64312C481D2CDA5000485049 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		64312C491D2CDA5000485049 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Source/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.davidkeegan.${PRODUCT_NAME}";
+				PRODUCT_NAME = KGNAPI;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
 		64D31DAE1D2B9288009B93CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -699,6 +829,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		64312C471D2CDA5000485049 /* Build configuration list for PBXNativeTarget "KGNAPI-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64312C481D2CDA5000485049 /* Debug */,
+				64312C491D2CDA5000485049 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		64D31DAD1D2B9288009B93CA /* Build configuration list for PBXNativeTarget "KGNAPI-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
