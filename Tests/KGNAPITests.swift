@@ -385,8 +385,9 @@ class KGNAPITestRequest: XCTestCase {
         API.sharedConnection().get(url: URL(string: "user")!, expiration: Expiration(seconds: expiration)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
-            XCTAssertEqual(location, .api)
-            expectation1.fulfill()
+            if location == .api {
+                expectation1.fulfill()
+            }
         }
 
         let expectation2 = expectation(withDescription: #function)

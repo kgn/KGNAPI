@@ -13,7 +13,7 @@ public class URLSessionAPIRequest: APIRequest {
     public init() {}
 
     public func call(url: URL, method: APIMethodType, headers: [String: AnyObject]?, body: Data?, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        let sessionConfiguration = URLSessionConfiguration.default()
+        let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.httpAdditionalHeaders = headers
 
         let request = NSMutableURLRequest(url: url)
