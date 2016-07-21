@@ -101,7 +101,7 @@ class KGNAPIEarthQuackRequest: XCTestCase {
     }
 
     func testGetCount() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().get(url: URL(string: "http://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson")!) { result, error, location in
             let json = try? JSONSerialization.jsonObject(with: result as! Data, options: [])
@@ -112,7 +112,7 @@ class KGNAPIEarthQuackRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
 }
@@ -227,7 +227,7 @@ class KGNAPITestRequest: XCTestCase {
     // MARK: - PUT
 
     func testPutUser() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().put(url: URL(string: "user")!) { result, error in
             XCTAssertEqual(result!["name"], "Steve Wozniak")
@@ -237,11 +237,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPutCar() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().put(url: URL(string: "car")!) { result, error in
             XCTAssertEqual(result!["company"], "Porsche")
@@ -251,11 +251,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPutHeaders() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().put(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "put"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -264,11 +264,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPutBody() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "put", "number": 1])
         API.sharedConnection().put(url: URL(string: "body")!, body: bodyData) { result, error in
@@ -278,11 +278,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPutError() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().put(url: URL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
@@ -290,13 +290,13 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     // MARK: - POST
 
     func testPostUser() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().post(url: URL(string: "user")!) { result, error in
             XCTAssertEqual(result!["name"], "Bill Gates")
@@ -306,11 +306,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPostCar() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().post(url: URL(string: "car")!) { result, error in
             XCTAssertEqual(result!["company"], "Porsche")
@@ -320,11 +320,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPostHeaders() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().post(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "post"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -333,11 +333,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPostBody() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "post", "number": 2])
         API.sharedConnection().post(url: URL(string: "body")!, body: bodyData) { result, error in
@@ -347,11 +347,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testPostError() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().post(url: URL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
@@ -359,13 +359,13 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     // MARK: - GET
 
     func testGetUser() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
             XCTAssertEqual(result!["name"], "Steve Jobs")
@@ -376,12 +376,12 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testGetUserCache() {
         let expiration = 1
-        let expectation1 = expectation(withDescription: #function)
+        let expectation1 = expectation(description: #function)
         API.sharedConnection().get(url: URL(string: "user")!, expiration: Expiration(seconds: expiration)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -390,7 +390,7 @@ class KGNAPITestRequest: XCTestCase {
             }
         }
 
-        let expectation2 = expectation(withDescription: #function)
+        let expectation2 = expectation(description: #function)
         DispatchQueue.main.after(when: .now()+Double(expiration+1)) {
             API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
                 XCTAssertNil(error)
@@ -403,11 +403,11 @@ class KGNAPITestRequest: XCTestCase {
             }
         }
 
-        waitForExpectations(withTimeout: TimeInterval(expiration+2), handler: nil)
+        waitForExpectations(timeout: TimeInterval(expiration+2), handler: nil)
     }
 
     func testGetUserCacheShouldAlsoRequestIfInCacheFalse() {
-        let expectation1 = expectation(withDescription: #function)
+        let expectation1 = expectation(description: #function)
         API.sharedConnection().get(url: URL(string: "user")!, expiration: Expiration.Never(shouldRequestIfAlreadyInCache: false)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -415,7 +415,7 @@ class KGNAPITestRequest: XCTestCase {
             expectation1.fulfill()
         }
 
-        let expectation2 = expectation(withDescription: #function)
+        let expectation2 = expectation(description: #function)
         API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
@@ -423,11 +423,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation2.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testGetCar() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().get(url: URL(string: "car")!) { result, error, location in
             XCTAssertEqual(result!["company"], "Audi")
@@ -438,11 +438,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testGetHeaders() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().get(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "get"]) { result, error, location in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -452,11 +452,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testGetBody() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "get", "number": 3])
         API.sharedConnection().get(url: URL(string: "body")!, body: bodyData) { result, error, location in
@@ -467,11 +467,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testGetError() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().get(url: URL(string: "error")!) { result, error, location in
             XCTAssertNotNil(error)
@@ -479,13 +479,13 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     // MARK: - DELETE
 
     func testDeleteUser() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().delete(url: URL(string: "user")!) { result, error in
             XCTAssertEqual(result!.count, 0)
@@ -493,11 +493,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testDeleteCar() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().delete(url: URL(string: "car")!) { result, error in
             XCTAssertNil(result)
@@ -505,11 +505,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testDeleteHeaders() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().delete(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "delete"]) { result, error in
             XCTAssertEqual(result!["Authorization"], "token")
@@ -518,11 +518,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testDeleteBody() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "delete", "number": 4])
         API.sharedConnection().delete(url: URL(string: "body")!, body: bodyData) { result, error in
@@ -532,11 +532,11 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
     func testDeleteError() {
-        let expectation = self.expectation(withDescription: #function)
+        let expectation = self.expectation(description: #function)
 
         API.sharedConnection().delete(url: URL(string: "error")!) { result, error in
             XCTAssertNotNil(error)
@@ -544,7 +544,7 @@ class KGNAPITestRequest: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(withTimeout: 1, handler: nil)
+        waitForExpectations(timeout: 1, handler: nil)
     }
 
 }
