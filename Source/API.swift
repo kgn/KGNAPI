@@ -138,7 +138,7 @@ public class API {
             // Request the data from the server
             self.request(url: url, method: .get, headers: headers, body: body) { [weak self] object, error in
                 if expiration != nil {
-                    if let data = object where error == nil {
+                    if let data = object, error == nil {
                         self?.cache.set(object: data, forKey: key, expires: expiration?.dateComponents)
                     }
                 }
