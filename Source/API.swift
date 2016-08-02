@@ -63,7 +63,7 @@ public class API {
 
     internal func cacheName(url: URL, headers: [String: AnyObject]?, body: Data?) -> String {
         // TODO: use headers and body
-        return url.absoluteString!
+        return url.absoluteString
     }
 
     public convenience init() {

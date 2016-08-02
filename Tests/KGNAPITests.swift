@@ -12,7 +12,7 @@ import XCTest
 class TestRequest: APIRequest {
 
     func call(url: URL, method: APIMethodType, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        DispatchQueue.global(attributes: .qosDefault).after(when: .now()+Double(arc4random_uniform(50))*0.01) {
+        DispatchQueue.global().asyncAfter(deadline: .now()+Double(arc4random_uniform(50))*0.01) {
             
             if method == .put {
                 if url.absoluteString == "user" {
@@ -391,7 +391,7 @@ class KGNAPITestRequest: XCTestCase {
         }
 
         let expectation2 = expectation(description: #function)
-        DispatchQueue.main.after(when: .now()+Double(expiration+1)) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+Double(expiration+1)) {
             API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
                 XCTAssertNil(error)
                 if location == .api {
