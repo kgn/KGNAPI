@@ -280,7 +280,7 @@ class KGNAPITestRequest: XCTestCase {
     func testPutBody() {
         let expectation = self.expectation(description: #function)
 
-        let bodyData = API.JSONData(body: ["type": "put", "number": 1])
+        let bodyData = API.JSONData(["type": "put", "number": 1])
         API.shared.put(url: URL(string: "body")!, body: bodyData) { result, error in
             let data = result as? [String: Any]
             XCTAssertEqual(data?["type"] as? String, "put")
@@ -352,7 +352,7 @@ class KGNAPITestRequest: XCTestCase {
     func testPostBody() {
         let expectation = self.expectation(description: #function)
 
-        let bodyData = API.JSONData(body: ["type": "post", "number": 2])
+        let bodyData = API.JSONData(["type": "post", "number": 2])
         API.shared.post(url: URL(string: "body")!, body: bodyData) { result, error in
             let data = result as? [String: Any]
             XCTAssertEqual(data?["type"] as? String, "post")
@@ -474,7 +474,7 @@ class KGNAPITestRequest: XCTestCase {
     func testGetBody() {
         let expectation = self.expectation(description: #function)
 
-        let bodyData = API.JSONData(body: ["type": "get", "number": 3])
+        let bodyData = API.JSONData(["type": "get", "number": 3])
         API.shared.get(url: URL(string: "body")!, body: bodyData) { result, error, location in
             let data = result as? [String: Any]
             XCTAssertEqual(data?["type"] as? String, "get")
@@ -542,7 +542,7 @@ class KGNAPITestRequest: XCTestCase {
     func testDeleteBody() {
         let expectation = self.expectation(description: #function)
 
-        let bodyData = API.JSONData(body: ["type": "delete", "number": 4])
+        let bodyData = API.JSONData(["type": "delete", "number": 4])
         API.shared.delete(url: URL(string: "body")!, body: bodyData) { result, error in
             let data = result as? [String: Any]
             XCTAssertEqual(data?["type"] as? String, "delete")
