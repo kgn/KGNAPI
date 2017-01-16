@@ -82,7 +82,7 @@ open class API {
     open var debugLevel: DebugLebel = .none
 
     /// The shared connection singleton: `API.shared`
-    static let shared: API = API()
+    open static let shared: API = API()
 
     /// Clear the cache
     open func clearCache() {
