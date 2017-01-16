@@ -13,6 +13,13 @@
 		64312C4D1D2CDA7A00485049 /* KGNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 836E699A1BCCD3B40089EAB1 /* KGNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64312C4E1D2CDA8200485049 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64312C3A1D2CDA0D00485049 /* Crypto.framework */; };
 		64312C4F1D2CDA8200485049 /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64312C3B1D2CDA0D00485049 /* KGNCache.framework */; };
+		64CE31D21E2C24BE00DF7A3A /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */; };
+		64CE31D31E2C24C400DF7A3A /* CommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64CE31D41E2C24C700DF7A3A /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */; };
+		64CE31D51E2C24CD00DF7A3A /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D01E2C24AE00DF7A3A /* CommonCrypto.framework */; };
+		64CE31D61E2C24D100DF7A3A /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */; };
+		64CE31D71E2C24D300DF7A3A /* CommonCrypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64CE31D81E2C24D900DF7A3A /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CE31CF1E2C24A100DF7A3A /* CommonCrypto.framework */; };
 		64D31D9A1D2B9225009B93CA /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* Crypto.framework */; };
 		64D31D9B1D2B9225009B93CA /* KGNCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D981D2B9217009B93CA /* KGNCache.framework */; };
 		64D31D9D1D2B9235009B93CA /* Crypto.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 64D31D971D2B9217009B93CA /* Crypto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -64,6 +71,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				64D31DCA1D2B933B009B93CA /* Crypto.framework in Copy Frameworks */,
+				64CE31D71E2C24D300DF7A3A /* CommonCrypto.framework in Copy Frameworks */,
 				64D31DCB1D2B933B009B93CA /* KGNCache.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -77,6 +85,7 @@
 			files = (
 				64D31D9D1D2B9235009B93CA /* Crypto.framework in Copy Frameworks */,
 				64D31D9E1D2B9235009B93CA /* KGNCache.framework in Copy Frameworks */,
+				64CE31D31E2C24C400DF7A3A /* CommonCrypto.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +96,9 @@
 		64312C3A1D2CDA0D00485049 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/watchOS/Crypto.framework; sourceTree = "<group>"; };
 		64312C3B1D2CDA0D00485049 /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/watchOS/KGNCache.framework; sourceTree = "<group>"; };
 		64312C421D2CDA5000485049 /* KGNAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KGNAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64CE31CF1E2C24A100DF7A3A /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/watchOS/CommonCrypto.framework; sourceTree = "<group>"; };
+		64CE31D01E2C24AE00DF7A3A /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/tvOS/CommonCrypto.framework; sourceTree = "<group>"; };
+		64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		64D31D921D2B9014009B93CA /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		64D31D941D2B91F4009B93CA /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crypto.framework; path = Carthage/Build/tvOS/Crypto.framework; sourceTree = "<group>"; };
 		64D31D951D2B91F4009B93CA /* KGNCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KGNCache.framework; path = Carthage/Build/tvOS/KGNCache.framework; sourceTree = "<group>"; };
@@ -111,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64312C4E1D2CDA8200485049 /* Crypto.framework in Frameworks */,
+				64CE31D81E2C24D900DF7A3A /* CommonCrypto.framework in Frameworks */,
 				64312C4F1D2CDA8200485049 /* KGNCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D31DBD1D2B92E2009B93CA /* Crypto.framework in Frameworks */,
+				64CE31D51E2C24CD00DF7A3A /* CommonCrypto.framework in Frameworks */,
 				64D31DBE1D2B92E2009B93CA /* KGNCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +144,7 @@
 			files = (
 				64D31DC51D2B931C009B93CA /* KGNAPI.framework in Frameworks */,
 				64D31DC61D2B9325009B93CA /* Crypto.framework in Frameworks */,
+				64CE31D61E2C24D100DF7A3A /* CommonCrypto.framework in Frameworks */,
 				64D31DC71D2B9325009B93CA /* KGNCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D31D9A1D2B9225009B93CA /* Crypto.framework in Frameworks */,
+				64CE31D21E2C24BE00DF7A3A /* CommonCrypto.framework in Frameworks */,
 				64D31D9B1D2B9225009B93CA /* KGNCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +166,7 @@
 				836E69A21BCCD3B40089EAB1 /* KGNAPI.framework in Frameworks */,
 				64D31DA01D2B9238009B93CA /* Crypto.framework in Frameworks */,
 				64D31DA11D2B9238009B93CA /* KGNCache.framework in Frameworks */,
+				64CE31D41E2C24C700DF7A3A /* CommonCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				64312C3A1D2CDA0D00485049 /* Crypto.framework */,
+				64CE31CF1E2C24A100DF7A3A /* CommonCrypto.framework */,
 				64312C3B1D2CDA0D00485049 /* KGNCache.framework */,
 			);
 			name = watchOS;
@@ -169,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				64D31D971D2B9217009B93CA /* Crypto.framework */,
+				64CE31D11E2C24B900DF7A3A /* CommonCrypto.framework */,
 				64D31D981D2B9217009B93CA /* KGNCache.framework */,
 			);
 			name = iOS;
@@ -178,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				64D31D941D2B91F4009B93CA /* Crypto.framework */,
+				64CE31D01E2C24AE00DF7A3A /* CommonCrypto.framework */,
 				64D31D951D2B91F4009B93CA /* KGNCache.framework */,
 			);
 			name = tvOS;
@@ -366,7 +386,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "David Keegan";
 				TargetAttributes = {
 					64312C411D2CDA5000485049 = {
@@ -383,11 +403,11 @@
 					};
 					836E69961BCCD3B40089EAB1 = {
 						CreatedOnToolsVersion = 7.0.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					836E69A01BCCD3B40089EAB1 = {
 						CreatedOnToolsVersion = 7.0.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -518,6 +538,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -544,6 +565,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -571,6 +593,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -597,6 +620,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -626,6 +650,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -644,6 +669,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -669,8 +695,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -717,8 +745,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -750,6 +780,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -775,6 +806,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

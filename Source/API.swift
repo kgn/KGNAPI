@@ -9,11 +9,15 @@
 import Foundation
 import KGNCache
 
-/// The API error domain
-public let APIErrorDomain = "kgn.api.error"
-
-/// The API error code for if no request has been implremented
-public let APINoRequestImplementationErrorCode = -1
+enum APIError: Error {
+    case noRequest
+    
+    var localizedDescription: String {
+        switch self {
+            case .noRequest: return "No API request implementation"
+        }
+    }
+}
 
 /// API method types: PUT, POST, GET, DELETE
 public enum APIMethodType: String {
@@ -38,30 +42,27 @@ public enum ResultLocation {
 
 /// Implement this protocal to configure the network requests.
 public protocol APIRequest {
-    func call(url: URL, method: APIMethodType, headers: [String: AnyObject]?, body: Data?, callback: ((result: AnyObject?, error: NSError?) -> Void))
+    func call(url: URL, method: APIMethodType, headers: [String: Any]?, body: Data?, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void))
 }
 
-public class API {
+open class API {
 
     private let cache: KGNCache.Cache
 
-    private func request(url: URL, method: APIMethodType = .get, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
-        if debugLevel == .print {
+    private func request(url: URL, method: APIMethodType = .get, headers: [String: Any]? = nil, body: Data? = nil, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
+        if self.debugLevel == .print {
             print("Request - url: '\(url)' method: '\(method)' headers: '\(headers)' body: '\(body)'")
         }
 
         guard let request = self.request else {
-            let error = NSError(domain: APIErrorDomain, code: APINoRequestImplementationErrorCode,
-                userInfo: [NSLocalizedDescriptionKey: "No API request implementation"]
-            )
-            callback(result: nil, error: error)
+            callback(nil, APIError.noRequest)
             return
         }
 
         request.call(url: url, method: method, headers: headers, body: body, callback: callback)
     }
 
-    internal func cacheName(url: URL, headers: [String: AnyObject]?, body: Data?) -> String {
+    internal func cacheName(url: URL, headers: [String: Any]?, body: Data?) -> String {
         // TODO: use headers and body
         return url.absoluteString
     }
@@ -75,31 +76,21 @@ public class API {
     }
 
     /// The request object to use
-    public var request: APIRequest?
+    open var request: APIRequest?
 
-    /// The debug level, defaults to `None`
-    public var debugLevel: DebugLebel = .none
+    /// The debug level, defaults to `none`
+    open var debugLevel: DebugLebel = .none
 
-    /// The shared connection singleton: `API.sharedConnection()`
-    public class func sharedConnection() -> API {
-        struct Static {
-            static let instance = API()
-        }
-        return Static.instance
-    }
-    
-//    /// The shared connection singleton: `API.sharedConnection`
-//    public static func sharedConnection() -> Self {
-//        return self.init()
-//    }
+    /// The shared connection singleton: `API.shared`
+    static let shared: API = API()
 
     /// Clear the cache
-    public func clearCache() {
+    open func clearCache() {
         self.cache.clear()
     }
 
     /// Converts a dictionary object to a json data object
-    public class func JSONData(body: [String: AnyObject]?) -> Data? {
+    open class func JSONData(body: [String: Any]?) -> Data? {
         if body == nil {
             return nil
         }
@@ -115,7 +106,7 @@ public class API {
      Defaults to nil. If nil, no caching occures.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func get(url: URL, headers: [String: AnyObject]? = nil, body: Data? = nil, expiration: Expiration? = nil, callback: ((result: AnyObject?, error: NSError?, resultLocation: ResultLocation?) -> Void)) {
+    open func get(url: URL, headers: [String: Any]? = nil, body: Data? = nil, expiration: Expiration? = nil, callback: @escaping ((_ result: Any?, _ error: Error?, _ resultLocation: ResultLocation?) -> Void)) {
         let key = self.cacheName(url: url, headers: headers, body: body)
         self.cache.object(forKey: key) { object, location in
             // Call the callback if the object is in the cache
@@ -126,7 +117,7 @@ public class API {
                 } else if location == .disk {
                     resultLocation = .disk
                 }
-                callback(result: data, error: nil, resultLocation: resultLocation)
+                callback(data, nil, resultLocation)
             }
 
             // If we have an object, and the expiration
@@ -139,10 +130,10 @@ public class API {
             self.request(url: url, method: .get, headers: headers, body: body) { [weak self] object, error in
                 if expiration != nil {
                     if let data = object, error == nil {
-                        self?.cache.set(object: data, forKey: key, expires: expiration?.dateComponents)
+                        self?.cache.set(object: data as AnyObject, forKey: key, expires: expiration?.dateComponents)
                     }
                 }
-                callback(result: object, error: error, resultLocation: .api)
+                callback(object, error, .api)
             }
         }
     }
@@ -154,7 +145,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func put(url: URL, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    open func put(url: URL, headers: [String: Any]? = nil, body: Data? = nil, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
         self.request(url: url, method: .put, headers: headers, body: body, callback: callback)
     }
 
@@ -165,7 +156,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func post(url: URL, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    open func post(url: URL, headers: [String: Any]? = nil, body: Data? = nil, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
         self.request(url: url, method: .post, headers: headers, body: body, callback: callback)
     }
 
@@ -176,7 +167,7 @@ public class API {
      - Parameter data: Additional data for the request.
      - Parameter callback: The method to call with with data or error from the request.
      */
-    public func delete(url: URL, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    open func delete(url: URL, headers: [String: Any]? = nil, body: Data? = nil, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
         self.request(url: url, method: .delete, headers: headers, body: body, callback: callback)
     }
     

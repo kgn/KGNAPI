@@ -8,21 +8,20 @@
 
 /// An APIRequest that wraps URLSession.
 /// The result object sent to the callback is a data object from URLSession.
-public class URLSessionAPIRequest: APIRequest {
-
+open class URLSessionAPIRequest: APIRequest {
     public init() {}
-
-    public func call(url: URL, method: APIMethodType, headers: [String: AnyObject]?, body: Data?, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    
+    public func call(url: URL, method: APIMethodType, headers: [String: Any]?, body: Data?, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.httpAdditionalHeaders = headers
-
-        let request = NSMutableURLRequest(url: url)
+        
+        var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body
 
         let session = URLSession(configuration: sessionConfiguration)
-        session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            callback(result: data, error: error)
+        session.dataTask(with: request, completionHandler: { (data, response, error) in
+            callback(data, error)
         }).resume()
     }
     

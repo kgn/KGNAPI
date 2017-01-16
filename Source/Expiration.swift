@@ -9,17 +9,17 @@
 import Foundation
 
 /// Exiration object, used to define the cache experiation of a request
-public class Expiration {
+open class Expiration {
 
     /// Determins if the APIRequest call should
     /// be made if a cached object already exists.
-    public let shouldRequestIfAlreadyInCache: Bool
+    open let shouldRequestIfAlreadyInCache: Bool
 
     /// The underlying date components object.
-    public var dateComponents: DateComponents?
+    open var dateComponents: DateComponents?
 
     /// Create an expiration object that never expires
-    public class func Never(shouldRequestIfAlreadyInCache: Bool = true) -> Self {
+    open class func Never(shouldRequestIfAlreadyInCache: Bool = true) -> Self {
         return self.init(dateComponents: nil, shouldRequestIfAlreadyInCache: shouldRequestIfAlreadyInCache)
     }
 

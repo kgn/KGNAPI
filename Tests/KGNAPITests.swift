@@ -9,80 +9,87 @@
 import XCTest
 @testable import KGNAPI
 
+enum TestRequestError: Error {
+    case put
+    case post
+    case get
+    case delete
+}
+
 class TestRequest: APIRequest {
 
-    func call(url: URL, method: APIMethodType, headers: [String: AnyObject]? = nil, body: Data? = nil, callback: ((result: AnyObject?, error: NSError?) -> Void)) {
+    func call(url: URL, method: APIMethodType, headers: [String: Any]? = nil, body: Data? = nil, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
         DispatchQueue.global().asyncAfter(deadline: .now()+Double(arc4random_uniform(50))*0.01) {
             
             if method == .put {
                 if url.absoluteString == "user" {
-                    callback(result: ["name": "Steve Wozniak", "company": "Apple", "year_of_birth": 1950], error: nil)
+                    callback(["name": "Steve Wozniak", "company": "Apple", "year_of_birth": 1950], nil)
                 }
                 if url.absoluteString == "car" {
-                    callback(result: ["company": "Porsche", "model": "GT3", "year": 2014], error: nil)
+                    callback(["company": "Porsche", "model": "GT3", "year": 2014], nil)
                 }
                 if url.absoluteString == "body" {
-                    callback(result: try? JSONSerialization.jsonObject(with: body!, options: []), error: nil)
+                    callback(try? JSONSerialization.jsonObject(with: body!, options: []), nil)
                 }
                 if url.absoluteString == "headers" {
-                    callback(result: headers, error: nil)
+                    callback(headers, nil)
                 }
                 if url.absoluteString == "error" {
-                    callback(result: nil, error: NSError(domain: "test.kgn.api.error.put", code: -1, userInfo: nil))
+                    callback(nil, TestRequestError.put)
                 }
             }
 
             if method == .post {
                 if url.absoluteString == "user" {
-                    callback(result: ["name": "Bill Gates", "company": "Microsoft", "year_of_birth": 1955], error: nil)
+                    callback(["name": "Bill Gates", "company": "Microsoft", "year_of_birth": 1955], nil)
                 }
                 if url.absoluteString == "car" {
-                    callback(result: ["company": "Porsche", "model": "911", "year": 2008], error: nil)
+                    callback(["company": "Porsche", "model": "911", "year": 2008], nil)
                 }
                 if url.absoluteString == "body" {
-                    callback(result: try? JSONSerialization.jsonObject(with: body!, options: []), error: nil)
+                    callback(try? JSONSerialization.jsonObject(with: body!, options: []), nil)
                 }
                 if url.absoluteString == "headers" {
-                    callback(result: headers, error: nil)
+                    callback(headers, nil)
                 }
                 if url.absoluteString == "error" {
-                    callback(result: nil, error: NSError(domain: "test.kgn.api.error.post", code: -1, userInfo: nil))
+                    callback(nil, TestRequestError.post)
                 }
             }
 
             if method == .get {
                 if url.absoluteString == "user" {
-                    callback(result: ["name": "Steve Jobs", "company": "Apple", "year_of_birth": 1955], error: nil)
+                    callback(["name": "Steve Jobs", "company": "Apple", "year_of_birth": 1955], nil)
                 }
                 if url.absoluteString == "car" {
-                    callback(result: ["company": "Audi", "model": "Q5", "year": 2016], error: nil)
+                    callback(["company": "Audi", "model": "Q5", "year": 2016], nil)
                 }
                 if url.absoluteString == "body" {
-                    callback(result: try? JSONSerialization.jsonObject(with: body!, options: []), error: nil)
+                    callback(try? JSONSerialization.jsonObject(with: body!, options: []), nil)
                 }
                 if url.absoluteString == "headers" {
-                    callback(result: headers, error: nil)
+                    callback(headers, nil)
                 }
                 if url.absoluteString == "error" {
-                    callback(result: nil, error: NSError(domain: "test.kgn.api.error.get", code: -1, userInfo: nil))
+                    callback(nil, TestRequestError.get)
                 }
             }
 
             if method == .delete {
                 if url.absoluteString == "user" {
-                    callback(result: [], error: nil)
+                    callback([], nil)
                 }
                 if url.absoluteString == "car" {
-                    callback(result: nil, error: nil)
+                    callback(nil, nil)
                 }
                 if url.absoluteString == "body" {
-                    callback(result: try? JSONSerialization.jsonObject(with: body!, options: []), error: nil)
+                    callback(try? JSONSerialization.jsonObject(with: body!, options: []), nil)
                 }
                 if url.absoluteString == "headers" {
-                    callback(result: headers, error: nil)
+                    callback(headers, nil)
                 }
                 if url.absoluteString == "error" {
-                    callback(result: nil, error: NSError(domain: "test.kgn.api.error.delete", code: -1, userInfo: nil))
+                    callback(nil, TestRequestError.delete)
                 }
             }
 
@@ -96,17 +103,17 @@ class KGNAPIEarthQuackRequest: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        API.sharedConnection().request = URLSessionAPIRequest()
-        API.sharedConnection().clearCache()
+        API.shared.request = URLSessionAPIRequest()
+        API.shared.clearCache()
     }
 
     func testGetCount() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().get(url: URL(string: "http://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson")!) { result, error, location in
-            let json = try? JSONSerialization.jsonObject(with: result as! Data, options: [])
-            XCTAssertNotNil(json?["count"])
-            XCTAssertNotNil(json?["maxAllowed"])
+        API.shared.get(url: URL(string: "http://earthquake.usgs.gov/fdsnws/event/1/count?format=geojson")!) { result, error, location in
+            let json = try! JSONSerialization.jsonObject(with: result as! Data, options: []) as! [String: Any]
+            XCTAssertNotNil(json["count"])
+            XCTAssertNotNil(json["maxAllowed"])
             XCTAssertEqual(location, .api)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -220,8 +227,8 @@ class KGNAPITestRequest: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        API.sharedConnection().request = TestRequest()
-        API.sharedConnection().clearCache()
+        API.shared.request = TestRequest()
+        API.shared.clearCache()
     }
 
     // MARK: - PUT
@@ -229,10 +236,11 @@ class KGNAPITestRequest: XCTestCase {
     func testPutUser() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().put(url: URL(string: "user")!) { result, error in
-            XCTAssertEqual(result!["name"], "Steve Wozniak")
-            XCTAssertEqual(result!["company"], "Apple")
-            XCTAssertEqual(result!["year_of_birth"], 1950)
+        API.shared.put(url: URL(string: "user")!) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["name"] as? String, "Steve Wozniak")
+            XCTAssertEqual(data?["company"] as? String, "Apple")
+            XCTAssertEqual(data?["year_of_birth"] as? Int, 1950)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -243,10 +251,11 @@ class KGNAPITestRequest: XCTestCase {
     func testPutCar() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().put(url: URL(string: "car")!) { result, error in
-            XCTAssertEqual(result!["company"], "Porsche")
-            XCTAssertEqual(result!["model"], "GT3")
-            XCTAssertEqual(result!["year"], 2014)
+        API.shared.put(url: URL(string: "car")!) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["company"] as? String, "Porsche")
+            XCTAssertEqual(data?["model"] as? String, "GT3")
+            XCTAssertEqual(data?["year"] as? Int, 2014)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -257,9 +266,10 @@ class KGNAPITestRequest: XCTestCase {
     func testPutHeaders() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().put(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "put"]) { result, error in
-            XCTAssertEqual(result!["Authorization"], "token")
-            XCTAssertEqual(result!["type"], "put")
+        API.shared.put(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "put"]) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["Authorization"] as? String, "token")
+            XCTAssertEqual(data?["type"] as? String, "put")
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -271,9 +281,10 @@ class KGNAPITestRequest: XCTestCase {
         let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "put", "number": 1])
-        API.sharedConnection().put(url: URL(string: "body")!, body: bodyData) { result, error in
-            XCTAssertEqual(result!["type"], "put")
-            XCTAssertEqual(result!["number"], 1)
+        API.shared.put(url: URL(string: "body")!, body: bodyData) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["type"] as? String, "put")
+            XCTAssertEqual(data?["number"] as? Int, 1)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -284,9 +295,8 @@ class KGNAPITestRequest: XCTestCase {
     func testPutError() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().put(url: URL(string: "error")!) { result, error in
-            XCTAssertNotNil(error)
-            XCTAssertEqual(error!.domain, "test.kgn.api.error.put")
+        API.shared.put(url: URL(string: "error")!) { result, error in
+            XCTAssertEqual(error?.localizedDescription, TestRequestError.put.localizedDescription)
             expectation.fulfill()
         }
 
@@ -298,10 +308,11 @@ class KGNAPITestRequest: XCTestCase {
     func testPostUser() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().post(url: URL(string: "user")!) { result, error in
-            XCTAssertEqual(result!["name"], "Bill Gates")
-            XCTAssertEqual(result!["company"], "Microsoft")
-            XCTAssertEqual(result!["year_of_birth"], 1955)
+        API.shared.post(url: URL(string: "user")!) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["name"] as? String, "Bill Gates")
+            XCTAssertEqual(data?["company"] as? String, "Microsoft")
+            XCTAssertEqual(data?["year_of_birth"] as? Int, 1955)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -312,10 +323,11 @@ class KGNAPITestRequest: XCTestCase {
     func testPostCar() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().post(url: URL(string: "car")!) { result, error in
-            XCTAssertEqual(result!["company"], "Porsche")
-            XCTAssertEqual(result!["model"], "911")
-            XCTAssertEqual(result!["year"], 2008)
+        API.shared.post(url: URL(string: "car")!) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["company"] as? String, "Porsche")
+            XCTAssertEqual(data?["model"] as? String, "911")
+            XCTAssertEqual(data?["year"] as? Int, 2008)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -326,9 +338,10 @@ class KGNAPITestRequest: XCTestCase {
     func testPostHeaders() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().post(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "post"]) { result, error in
-            XCTAssertEqual(result!["Authorization"], "token")
-            XCTAssertEqual(result!["type"], "post")
+        API.shared.post(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "post"]) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["Authorization"] as? String, "token")
+            XCTAssertEqual(data?["type"] as? String, "post")
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -340,9 +353,10 @@ class KGNAPITestRequest: XCTestCase {
         let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "post", "number": 2])
-        API.sharedConnection().post(url: URL(string: "body")!, body: bodyData) { result, error in
-            XCTAssertEqual(result!["type"], "post")
-            XCTAssertEqual(result!["number"], 2)
+        API.shared.post(url: URL(string: "body")!, body: bodyData) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["type"] as? String, "post")
+            XCTAssertEqual(data?["number"] as? Int, 2)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -353,9 +367,8 @@ class KGNAPITestRequest: XCTestCase {
     func testPostError() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().post(url: URL(string: "error")!) { result, error in
-            XCTAssertNotNil(error)
-            XCTAssertEqual(error!.domain, "test.kgn.api.error.post")
+        API.shared.post(url: URL(string: "error")!) { result, error in
+            XCTAssertEqual(error?.localizedDescription, TestRequestError.post.localizedDescription)
             expectation.fulfill()
         }
         
@@ -367,10 +380,11 @@ class KGNAPITestRequest: XCTestCase {
     func testGetUser() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
-            XCTAssertEqual(result!["name"], "Steve Jobs")
-            XCTAssertEqual(result!["company"], "Apple")
-            XCTAssertEqual(result!["year_of_birth"], 1955)
+        API.shared.get(url: URL(string: "user")!) { result, error, location in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["name"] as? String, "Steve Jobs")
+            XCTAssertEqual(data?["company"] as? String, "Apple")
+            XCTAssertEqual(data?["year_of_birth"] as? Int, 1955)
             XCTAssertEqual(location, .api)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -382,7 +396,7 @@ class KGNAPITestRequest: XCTestCase {
     func testGetUserCache() {
         let expiration = 1
         let expectation1 = expectation(description: #function)
-        API.sharedConnection().get(url: URL(string: "user")!, expiration: Expiration(seconds: expiration)) { result, error, location in
+        API.shared.get(url: URL(string: "user")!, expiration: Expiration(seconds: expiration)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
             if location == .api {
@@ -392,7 +406,7 @@ class KGNAPITestRequest: XCTestCase {
 
         let expectation2 = expectation(description: #function)
         DispatchQueue.main.asyncAfter(deadline: .now()+Double(expiration+1)) {
-            API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
+            API.shared.get(url: URL(string: "user")!) { result, error, location in
                 XCTAssertNil(error)
                 if location == .api {
                     XCTAssertNotNil(result)
@@ -408,7 +422,7 @@ class KGNAPITestRequest: XCTestCase {
 
     func testGetUserCacheShouldAlsoRequestIfInCacheFalse() {
         let expectation1 = expectation(description: #function)
-        API.sharedConnection().get(url: URL(string: "user")!, expiration: Expiration.Never(shouldRequestIfAlreadyInCache: false)) { result, error, location in
+        API.shared.get(url: URL(string: "user")!, expiration: Expiration.Never(shouldRequestIfAlreadyInCache: false)) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
             XCTAssertEqual(location, .api)
@@ -416,7 +430,7 @@ class KGNAPITestRequest: XCTestCase {
         }
 
         let expectation2 = expectation(description: #function)
-        API.sharedConnection().get(url: URL(string: "user")!) { result, error, location in
+        API.shared.get(url: URL(string: "user")!) { result, error, location in
             XCTAssertNotNil(result)
             XCTAssertNil(error)
             XCTAssertEqual(location, .api)
@@ -429,10 +443,11 @@ class KGNAPITestRequest: XCTestCase {
     func testGetCar() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().get(url: URL(string: "car")!) { result, error, location in
-            XCTAssertEqual(result!["company"], "Audi")
-            XCTAssertEqual(result!["model"], "Q5")
-            XCTAssertEqual(result!["year"], 2016)
+        API.shared.get(url: URL(string: "car")!) { result, error, location in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["company"] as? String, "Audi")
+            XCTAssertEqual(data?["model"] as? String, "Q5")
+            XCTAssertEqual(data?["year"] as? Int, 2016)
             XCTAssertEqual(location, .api)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -444,9 +459,10 @@ class KGNAPITestRequest: XCTestCase {
     func testGetHeaders() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().get(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "get"]) { result, error, location in
-            XCTAssertEqual(result!["Authorization"], "token")
-            XCTAssertEqual(result!["type"], "get")
+        API.shared.get(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "get"]) { result, error, location in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["Authorization"] as? String, "token")
+            XCTAssertEqual(data?["type"] as? String, "get")
             XCTAssertEqual(location, .api)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -459,9 +475,10 @@ class KGNAPITestRequest: XCTestCase {
         let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "get", "number": 3])
-        API.sharedConnection().get(url: URL(string: "body")!, body: bodyData) { result, error, location in
-            XCTAssertEqual(result!["type"], "get")
-            XCTAssertEqual(result!["number"], 3)
+        API.shared.get(url: URL(string: "body")!, body: bodyData) { result, error, location in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["type"] as? String, "get")
+            XCTAssertEqual(data?["number"] as? Int, 3)
             XCTAssertEqual(location, .api)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -473,9 +490,8 @@ class KGNAPITestRequest: XCTestCase {
     func testGetError() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().get(url: URL(string: "error")!) { result, error, location in
-            XCTAssertNotNil(error)
-            XCTAssertEqual(error!.domain, "test.kgn.api.error.get")
+        API.shared.get(url: URL(string: "error")!) { result, error, location in
+            XCTAssertEqual(error?.localizedDescription, TestRequestError.get.localizedDescription)
             expectation.fulfill()
         }
         
@@ -487,8 +503,9 @@ class KGNAPITestRequest: XCTestCase {
     func testDeleteUser() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().delete(url: URL(string: "user")!) { result, error in
-            XCTAssertEqual(result!.count, 0)
+        API.shared.delete(url: URL(string: "user")!) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertNil(data)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -499,7 +516,7 @@ class KGNAPITestRequest: XCTestCase {
     func testDeleteCar() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().delete(url: URL(string: "car")!) { result, error in
+        API.shared.delete(url: URL(string: "car")!) { result, error in
             XCTAssertNil(result)
             XCTAssertNil(error)
             expectation.fulfill()
@@ -511,9 +528,10 @@ class KGNAPITestRequest: XCTestCase {
     func testDeleteHeaders() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().delete(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "delete"]) { result, error in
-            XCTAssertEqual(result!["Authorization"], "token")
-            XCTAssertEqual(result!["type"], "delete")
+        API.shared.delete(url: URL(string: "headers")!, headers: ["Authorization": "token", "type": "delete"]) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["Authorization"] as? String, "token")
+            XCTAssertEqual(data?["type"] as? String, "delete")
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -525,9 +543,10 @@ class KGNAPITestRequest: XCTestCase {
         let expectation = self.expectation(description: #function)
 
         let bodyData = API.JSONData(body: ["type": "delete", "number": 4])
-        API.sharedConnection().delete(url: URL(string: "body")!, body: bodyData) { result, error in
-            XCTAssertEqual(result!["type"], "delete")
-            XCTAssertEqual(result!["number"], 4)
+        API.shared.delete(url: URL(string: "body")!, body: bodyData) { result, error in
+            let data = result as? [String: Any]
+            XCTAssertEqual(data?["type"] as? String, "delete")
+            XCTAssertEqual(data?["number"] as? Int, 4)
             XCTAssertNil(error)
             expectation.fulfill()
         }
@@ -538,9 +557,8 @@ class KGNAPITestRequest: XCTestCase {
     func testDeleteError() {
         let expectation = self.expectation(description: #function)
 
-        API.sharedConnection().delete(url: URL(string: "error")!) { result, error in
-            XCTAssertNotNil(error)
-            XCTAssertEqual(error!.domain, "test.kgn.api.error.delete")
+        API.shared.delete(url: URL(string: "error")!) { result, error in
+            XCTAssertEqual(error?.localizedDescription, TestRequestError.delete.localizedDescription)
             expectation.fulfill()
         }
         
