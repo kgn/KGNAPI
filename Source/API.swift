@@ -90,11 +90,11 @@ open class API {
     }
 
     /// Converts a dictionary object to a json data object
-    open class func JSONData(body: [String: Any]?) -> Data? {
-        if body == nil {
-            return nil
+    open class func JSONData(_ body: [String: Any]?) -> Data? {
+        if body != nil {
+            return try? JSONSerialization.data(withJSONObject: body!, options: [])
         }
-        return try? JSONSerialization.data(withJSONObject: body!, options: [])
+        return nil
     }
 
     /**
