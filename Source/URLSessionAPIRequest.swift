@@ -12,14 +12,19 @@ open class URLSessionAPIRequest: APIRequest {
     public init() {}
     
     public func call(url: URL, method: APIMethodType, headers: [String: Any]?, body: Data?, callback: @escaping ((_ result: Any?, _ error: Error?) -> Void)) {
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.httpAdditionalHeaders = headers
+        let session: URLSession!
+        if headers == nil {
+            session = URLSession.shared
+        } else {
+            let sessionConfiguration = URLSessionConfiguration.default
+            sessionConfiguration.httpAdditionalHeaders = headers
+            session = URLSession(configuration: sessionConfiguration)
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.httpBody = body
 
-        let session = URLSession(configuration: sessionConfiguration)
         session.dataTask(with: request, completionHandler: { (data, response, error) in
             callback(data, error)
         }).resume()
